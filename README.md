@@ -29,4 +29,4 @@
 5. Создать -> Ввести путь `Путь до проекта\ffmpeg-master-latest-win64-gpl-shared\bin`
 
 ## Подробная видео-инструкция
-[будет ссылка на yt]
+[Подробная видео-инструкция(yandex disk)](https://disk.yandex.ru/i/LFwOiiVR7x8uJg)
