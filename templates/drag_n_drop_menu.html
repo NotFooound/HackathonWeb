@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    Ваше видео в pdf
+{% endblock %}
+
+{% block content %}
+<div class="dnd-container">
+    <div>
+        <div class="card-wrapper">
+            <div id="drop-area" class="dnd-rectangle">Перетащите файл в эту область</div>
+            <div class="dnd-hidden-rect"></div>
+        </div>
+        <div id="loadingMessage1" class="loading-message" style="display:none;">
+            <span>Ожидайте</span>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div class="dnd-form-wrapper">
+        <div class="dnd-secret-rectangle">Здесь будет название вашего видео {{ title }}</div>
+        <div id="loadingMessage2" class="loading-message" style="display:none;">
+            <span>Ожидайте</span>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div class="dnd-form-wrapper">
+        <form id="dndForm" method="POST" action="{% url 'drag_n_drop_menu_download'  %}">
+            {% csrf_token %}
+            <div class="dnd-button-wrapper">
+                <button type="submit" class="dnd-rectangle" id="submitButton">Распознать</button>
+                <div class="dnd-hidden-rect"></div>
+            </div>
+        </form>
+        <div id="loadingMessage3" class="loading-message" style="display:none;">
+            <span>Ожидайте</span>
+            <div class="spinner"></div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+    const btn = document.getElementById('drop-area');
+    let isRed = true;
+
+    btn.addEventListener('click', () => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot', isRed ? 'red' : 'blue');
+
+      // Размер точки
+      const dotSize = 20;
+
+      // Случайные координаты в пределах окна
+      const x = Math.random() * (window.innerWidth - dotSize);
+      const y = Math.random() * (window.innerHeight - dotSize);
+
+      dot.style.left = `${x}px`;
+      dot.style.top = `${y}px`;
+
+      document.body.appendChild(dot);
+      isRed = !isRed; // чередуем цвет
+
+      setTimeout(() => {
+        dot.classList.add('fade-out');
+
+        // Удалить из DOM после завершения анимации (1s)
+        setTimeout(() => {
+          dot.remove();
+        }, 500);
+      }, 1000);
+    });
+    </script>
+
+    <script>
+            document.getElementById('dndForm').addEventListener('submit', function () {
+            document.getElementById('submitButton').disabled = true;
+            document.getElementById('loadingMessage1').style.display = 'flex';
+            document.getElementById('loadingMessage1').style.visibility = 'hidden';
+            document.getElementById('loadingMessage2').style.display = 'flex';
+            document.getElementById('loadingMessage3').style.display = 'flex';
+            document.getElementById('loadingMessage3').style.visibility = 'hidden';
+        });
+    </script>
+    <script src={% static 'js/dnd.js' %}></script>
+{% endblock %}

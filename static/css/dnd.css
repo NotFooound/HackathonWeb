@@ -1,0 +1,135 @@
+.dnd-container {
+    /*position: absolute;*/
+    display: flex;
+    justify-content: center; /* Центрирует по горизонтали */
+    align-items: center;     /* Центрирует по вертикали */
+    width: 100%;             /* Занимает всю ширину */
+    height: 100vh;           /* Занимает всю высоту */
+    gap: 1%;
+    top: 0;
+    left: 0;
+}
+
+.dnd-secret-rectangle{
+    display: flex;            /* используем flex внутри прямоугольника */
+    justify-content: center;  /* центрируем текст по горизонтали */
+    align-items: center;      /* центрируем текст по вертикали */
+    width: 600px;
+    height: 200px;
+    border: 2px solid #1B1F27;  /* Изначальная чёрная рамка */
+    background-color: white;
+    color: rgba(27, 31, 39,1);             /* цвет текста */
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 25px;          /* размер текста */
+    font-family: TTintBI, sans-serif;
+    text-align: center;       /* центрирование текста, если оно многострочное */
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Плавный переход */
+    padding: 10px 15px;
+}
+
+
+.dnd-card-wrapper {
+    position: relative; /* чтобы hidden-rect был привязан к каждой карточке */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dnd-button-wrapper {
+    position: relative; /* <-- Теперь фон будет относиться к этой обёртке */
+    width: fit-content; /* Подгоняет ширину по кнопке */
+}
+
+.dnd-rectangle {
+    display: flex;            /* используем flex внутри прямоугольника */
+    justify-content: center;  /* центрируем текст по горизонтали */
+    align-items: center;      /* центрируем текст по вертикали */
+    width: 400px;
+    height: 200px;
+    border: 2px solid #1B1F27;  /* Изначальная чёрная рамка */
+    background-color: white;
+    color: rgba(27, 31, 39,1);             /* цвет текста */
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 35px;          /* размер текста */
+    font-family: TTint, sans-serif;
+    text-align: center;       /* центрирование текста, если оно многострочное */
+    padding: 10px;
+    box-sizing: border-box;
+    user-select: none;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Плавный переход */
+}
+
+.dnd-rectangle:hover {
+    transform: translateY(-10px) scale(1.05); /* Поднимает прямоугольник */
+    box-shadow: 0 24px 7px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.dnd-hidden-rect {
+    position: absolute;
+    top: 5%; /* Сразу располагаем его под основным прямоугольником */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 89, 0, 1);
+    border-radius: 15px;
+    z-index: -1;
+    display: flex;
+    border: 2px solid #1B1F27;
+    opacity: 0; /* Изначально скрыт */
+    pointer-events: none; /* Не кликабельный */
+    transition: transform 0.3s, opacity 0.3s ease;
+}
+
+.dnd-rectangle:hover + .dnd-hidden-rect {
+    transform: scale(1.05);
+    opacity: 1; /* Показываем при наведении на .rectangle */
+}
+
+.dnd-input {
+    width: 400px;
+    height: 50px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border: 2px solid #1B1F27;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: TTint, sans-serif;
+    color: #1B1F27;
+    outline: none;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.dnd-input:focus {
+    border-color: #FF5900;
+    box-shadow: 0 0 8px rgba(255, 89, 0, 0.4);
+}
+
+
+.dot {
+  display: inline-block;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 5px;
+  transform: scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.red {
+  background-color: rgba(255, 89, 0, 1);
+}
+
+.blue {
+  background-color: rgba(27, 31, 39,1);
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(0);
+}

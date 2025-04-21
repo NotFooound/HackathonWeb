@@ -1,0 +1,41 @@
+body{
+  cursor: none;
+}
+
+#cursor {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  opacity: 0.8;
+  background-color: #1B1F27;
+  pointer-events: none; /* Курсор не будет мешать кликам */
+  transition: transform 0.1s ease-out; /* Плавное движение */
+}
+
+/* След за мышью */
+.trail {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: #1B1F27;
+  opacity: 0.8;
+  pointer-events: none;
+  transform: translate(-50%, -50%); /* Центрируем курсор по точке мыши */
+  animation: fadeOut 1s ease-out forwards; /* Анимация исчезновения */
+}
+
+
+/* Анимация исчезновения */
+@keyframes fadeOut {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+

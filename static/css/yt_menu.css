@@ -1,0 +1,136 @@
+.yt-container {
+    display: flex;
+    justify-content: center; /* Центрирует по горизонтали */
+    align-items: center;     /* Центрирует по вертикали */
+    height: 90vh;
+    gap: 1%;
+}
+
+.yt-secret-rectangle{
+    display: flex;            /* используем flex внутри прямоугольника */
+    justify-content: center;  /* центрируем текст по горизонтали */
+    align-items: center;      /* центрируем текст по вертикали */
+    width: 600px;
+    height: 60px;
+    border: 2px solid #1B1F27;  /* Изначальная чёрная рамка */
+    background-color: white;
+    color: rgba(27, 31, 39,1);             /* цвет текста */
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 35px;          /* размер текста */
+    font-family: TTint, sans-serif;
+    text-align: center;       /* центрирование текста, если оно многострочное */
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Плавный переход */
+    padding: 10px 15px;
+}
+
+
+.yt-card-wrapper {
+    position: relative; /* чтобы hidden-rect был привязан к каждой карточке */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.yt-button-wrapper {
+    position: relative; /* <-- Теперь фон будет относиться к этой обёртке */
+    width: fit-content; /* Подгоняет ширину по кнопке */
+}
+
+.yt-rectangle {
+    display: flex;            /* используем flex внутри прямоугольника */
+    justify-content: center;  /* центрируем текст по горизонтали */
+    align-items: center;      /* центрируем текст по вертикали */
+    width: 400px;
+    height: 60px;
+    border: 2px solid #1B1F27;  /* Изначальная чёрная рамка */
+    background-color: white;
+    color: rgba(27, 31, 39,1);             /* цвет текста */
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 35px;          /* размер текста */
+    font-family: TTint, sans-serif;
+    text-align: center;       /* центрирование текста, если оно многострочное */
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Плавный переход */
+}
+
+.yt-rectangle:hover {
+    transform: translateY(-10px) scale(1.05); /* Поднимает прямоугольник */
+    box-shadow: 0 24px 7px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.yt-hidden-rect {
+    position: absolute;
+    top: 5%; /* Сразу располагаем его под основным прямоугольником */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 89, 0, 1);
+    border-radius: 15px;
+    z-index: -1;
+    display: flex;
+    border: 2px solid #1B1F27;
+    opacity: 0; /* Изначально скрыт */
+    pointer-events: none; /* Не кликабельный */
+    transition: transform 0.3s, opacity 0.3s ease;
+}
+
+.yt-rectangle:hover + .yt-hidden-rect {
+    transform: scale(1.05);
+    opacity: 1; /* Показываем при наведении на .rectangle */
+}
+
+.yt-input {
+    width: 400px;
+    height: 50px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border: 2px solid #1B1F27;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: TTint, sans-serif;
+    color: #1B1F27;
+    outline: none;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.yt-input:focus {
+    border-color: #FF5900;
+    box-shadow: 0 0 8px rgba(255, 89, 0, 0.4);
+}
+
+.loading-message {
+    display: flex;
+    position: relative; /* Изменено с absolute на fixed */
+    transform: translate(0%, +50%); /* Подстраиваем элементы точно в центр */
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
+    font-size: 1vw;
+    color: #1B1F27;
+    font-weight: bold;
+    font-family: TTint, sans-serif;
+}
+
+/* Кружок, который крутится */
+.spinner {
+    border: 4px solid #1B1F27; /* Светлый фон */
+    border-top: 4px solid #FF5900; /* Синий цвет */
+    border-radius: 50%;
+    width: 2vw;
+    height: 2vw;
+    animation: spin 1s linear infinite;
+}
+
+/* Анимация вращения */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

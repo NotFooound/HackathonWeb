@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Видео с ютуба в pdf
+{% endblock %}
+
+{% block content %}
+    <div class="yt-container">
+        <div class="yt-form-wrapper">
+            <!-- Форма для отправки данных -->
+            <form id="ytForm" method="POST" action="{% url 'yt_menu_download' %}">
+                {% csrf_token %}
+                <input type="text" name="youtube_link" class="yt-input" placeholder="Вставьте ссылку на видео youtube">
+
+                <div class="yt-button-wrapper">
+                    <button type="submit" class="yt-rectangle" id="submitButton">Распознать</button>
+                    <div class="yt-hidden-rect"></div>
+                </div>
+            </form>
+
+                <!-- Сообщение ожидания с анимированным кружком -->
+            <div id="loadingMessage" class="loading-message" style="display:none;">
+                <span>Ожидайте</span>
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+            document.getElementById('ytForm').addEventListener('submit', function () {
+            document.getElementById('submitButton').disabled = true;
+            document.getElementById('loadingMessage').style.display = 'flex';
+        });
+    </script>
+{% endblock %}
+

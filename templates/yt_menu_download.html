@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Скачать видео
+{% endblock %}
+
+{% block content %}
+    <div class="yt-container">
+        <div class="yt-secret-rectangle">{{ title }}</div>
+        <div class="yt-form-wrapper">
+            <form method="POST" action="{% url 'yt_menu_download' title %}">
+                {% csrf_token %}
+                <div class="yt-button-wrapper">
+                    <button type="submit" class="yt-rectangle" id="downloadButton">Скачать</button>
+                    <div class="yt-hidden-rect"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

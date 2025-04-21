@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'TTint';
+  src: url('../bolds/TTInt.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'TTintBI';
+    src: url('../bolds/TTIntBI.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.main-text{
+    font-family: 'TTint', sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, +250%); /* Центрирует по горизонтали */
+    display: inline-block;
+    justify-content: center;  /* центрируем текст по горизонтали */
+    align-items: center;      /* центрируем текст по вертикали */
+    font-size: 250%;
+
+}
+
+.text-bold-italic {
+    font-family: 'TTintBI', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    color: rgba(27, 31, 39,1);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Центрирует по горизонтали */
+    display: inline-block;
+
+    justify-content: center;  /* центрируем текст по горизонтали */
+    align-items: center;      /* центрируем текст по вертикали */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Центрирует по горизонтали */
+    align-items: center;     /* Центрирует по вертикали */
+    height: 90vh;
+    gap: 15%;
+}
+
+.card-wrapper {
+    position: relative; /* чтобы hidden-rect был привязан к каждой карточке */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rectangle {
+    display: flex;            /* используем flex внутри прямоугольника */
+    justify-content: center;  /* центрируем текст по горизонтали */
+    align-items: center;      /* центрируем текст по вертикали */
+    width: 400px;
+    height: 200px;
+    border: 2px solid #1B1F27;  /* Изначальная чёрная рамка */
+    background-color: white;
+    color: rgba(27, 31, 39,1);             /* цвет текста */
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 35px;          /* размер текста */
+    font-family: TTint, sans-serif;
+    text-align: center;       /* центрирование текста, если оно многострочное */
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Плавный переход */
+}
+
+.rectangle:hover {
+    transform: translateY(-10px) scale(1.05); /* Поднимает прямоугольник */
+    box-shadow: 0 24px 7px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.hidden-rect {
+    position: absolute;
+    top: 5%; /* Сразу располагаем его под основным прямоугольником */
+    left: 0;
+    width: 400px;
+    height: 200px;
+    background-color: rgba(255, 89, 0, 1);
+    border-radius: 15px;
+    z-index: -1;
+    display: flex;
+    border: 2px solid #1B1F27;
+    opacity: 0; /* Изначально скрыт */
+    pointer-events: none; /* Не кликабельный */
+    transition: transform 0.3s, opacity 0.3s ease;
+}
+
+.rectangle:hover + .hidden-rect {
+    transform: scale(1.05);
+    opacity: 1; /* Показываем при наведении на .rectangle */
+}
+
+
+

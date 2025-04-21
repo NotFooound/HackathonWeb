@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block content %}
+    <div class="main-text">СЕРВИС ДЛЯ ГЕНЕРАЦИИ КОНСПЕКТА ПО ВИДЕО</div>
+
+    <div class="container">
+        <div class="card-wrapper">
+            <a href="{% url 'yt_menu' %}" class="rectangle">
+            По ссылке
+            </a>
+
+            <div class="hidden-rect"></div>
+        </div>
+
+        <div class="card-wrapper">
+            <a href="{% url 'drag_n_drop_menu' %}" class="rectangle">
+            По файлу
+            </a>
+
+            <div class="hidden-rect"></div>
+        </div>
+    </div>
+{% endblock %}
