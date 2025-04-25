@@ -30,3 +30,4 @@
 
 ## Подробная видео-инструкция
 [Подробная видео-инструкция(yandex disk)](https://disk.yandex.ru/i/LFwOiiVR7x8uJg)
+[Инструкция + демонстрация работы(yandex disk)](https://disk.yandex.ru/i/9Gc1espcPftI7w)
